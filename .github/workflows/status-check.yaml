@@ -1,5 +1,5 @@
 name: Status Check Functions
-#on: [push]
+on: [push]
 
 jobs:
   job-1:

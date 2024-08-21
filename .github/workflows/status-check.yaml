@@ -1,5 +1,8 @@
 name: Status Check Functions
-on: [push]
+on: 
+  push:
+    branches: 
+      - status-check
 
 jobs:
   job-1:

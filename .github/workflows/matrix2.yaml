@@ -14,7 +14,10 @@ jobs:
               is-ubuntu: true
             - os: macos-latest
               node-version: 15
-            - experimental: false
+              experimental: false
+          exclude:
+            - os: ubuntu-latest
+              node-version: 14
         fail-fast: false  
       runs-on: ${{matrix.os}} 
       steps:     

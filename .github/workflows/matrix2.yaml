@@ -12,10 +12,14 @@ jobs:
           includes:
             - os: ubuntu-latest
               is-ubuntu: true
+            - os: macos-latest
+              node-version: 15
+            - experimental: false
         fail-fast: false  
       runs-on: ${{matrix.os}} 
       steps:     
         - run: node -v     
+        - run: echo '${{ toJson(matrix) }}'
         - uses: actions/setup-node@v3
           with:
             node-version: ${{ matrix.node-version }}

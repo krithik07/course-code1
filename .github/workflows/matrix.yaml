@@ -15,10 +15,10 @@ jobs:
   node-matrix:
     #continue-on-error: ${{ matrix.experimental == true }}
       runs-on: ubuntu-latest
-    strategy:
-      matrix:
+      strategy:
+        matrix:
        # os: [ubuntu-latest, windows-latest]
-        node-version: [14, 15, 16]
+          node-version: [14, 15, 16]
       #   include:
       #     - os: ubuntu-latest
       #       is-ubuntu: true
@@ -36,12 +36,12 @@ jobs:
       # fail-fast: true
       # max-parallel: 3
     #runs-on: ${{ matrix.os }}
-    steps:
+      steps:
       # - if: matrix.experimental == true
       #   run: exit 1
-      - run: node -v
+        - run: node -v
       #- run: echo '${{ toJson(matrix) }}'
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: node -v
+        - uses: actions/setup-node@v3
+          with:
+            node-version: ${{ matrix.node-version }}
+        - run: node -v

@@ -1,6 +1,6 @@
 name: Concurrency 1
-run-name: Concurrency 1 (${{ inputs.environment }})
-on: [push]
+on:
+  workflow_dispatch:
     inputs:
       environment:
         description: "Environment"

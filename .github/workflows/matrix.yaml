@@ -3,25 +3,15 @@ on: [push]
 
 
 jobs:
-  node-matrix:   
+  node-matrix: 
+    runs-on: ubuntu-latest
     strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        node-version: [14,15,16]
-        include:
-         - os: ubuntu-latest
-           isubuntu: true
-         - os: ubuntu-latest
-           node-version: 17
-        exclude:
-         - os: ubuntu-latest
-           node-version: 14
-    runs-on: ${{ matrix.os }}
+     matrix:
+      node-version: [14,15,16]  
     steps:
       - run: node -v
-      - run: echo "${{ toJson(matrix) }}"
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{matrix.node-version}}
+          node-version: ${{ matrix.node-version}}
       - run: node -v 
 

@@ -13,7 +13,7 @@ on: [push]
 
 jobs:
   node-matrix:
-    continue-on-error: ${{ matrix.experimental = true }}
+    continue-on-error: ${{ matrix.experimental == true }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
@@ -21,6 +21,8 @@ jobs:
         include:
           - os: ubuntu-latest
             is-ubuntu: true
+          - os: macos-latest
+            node-version: 15
           - experimental: false
           - os: ubuntu-latest
             node-version: 16

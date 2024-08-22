@@ -1,12 +1,14 @@
 name: Concurrency 1
 
 on:
-  push:
-    branches:
-      - status-check  # Replace 'main' with your desired branch name
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment"
+        type: environment
+        required: true
 
 concurrency: concurrency-1
-
 jobs:
   sleep:
     runs-on: ubuntu-latest

@@ -13,6 +13,8 @@ on:
 jobs:
    prepare-matrix:
      runs-on: ubuntu-latest
+     outputs:
+       matrix-arrays: ${{ steps.matrix-arrays.output.result }}
      steps:
        - uses: actions/github-script@v6
         id: matrix-arrays
@@ -27,11 +29,12 @@ jobs:
        - run: |
            echo '${{ steps.step-1.output.step-output}}'
            echo '${{ steps.step-2.output.step-output}}'
-  node-matrix:   
+  node-matrix: 
+    needs: prepare-matrix  
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-        node-version: [14,15,16]
+        os: ${{ fromJson(needs.prepare-matrix.output.matrix-arrays).os }}
+        node-version: ${{ fromJson(needs.prepare-matrix.output.matrix-arrays).node-version }}
     runs-on: ${{ matrix.os }}
     steps:
       - run: node -v
